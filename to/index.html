@@ -16,13 +16,13 @@ function guv/*getUrlValue*/(name) {
 var a=urldata;
 for(let i=0;i<a.length;i++){
   let b=a[i].name;
-  if(new RegExp(guv("id"),"i").test(b)||
-  new RegExp(guv("to"),"i").test(b)||
-  new RegExp(guv("name"),"i").test(b)){
+  if(new RegExp(guv("id"),a[i].case).test(b)||
+  new RegExp(guv("to"),a[i].case).test(b)||
+  new RegExp(guv("name"),a[i].case).test(b)){
     location.href=a[i].url;
     return;
   }
-  if(new RegExp(location.href.split("#")[1],"i").test(b)){
+  if(new RegExp(location.href.split("#")[1],a[i].case).test(b)){
     location.href=a[i].url;
     return;
   }
