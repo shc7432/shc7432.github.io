@@ -1,5 +1,6 @@
 (function(){
 window.urldata=[];
+//urldata.push({name:"",url:""})
 urldata.push({name:"baidu",url:"https://www.baidu.com/s?q1="})
 urldata.push({name:"百度",url:"https://www.baidu.com/s?q1="})
 urldata.push({name:"bilibili",url:"https://www.bilibili.com/"})
