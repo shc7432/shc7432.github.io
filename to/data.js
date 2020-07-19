@@ -1,11 +1,12 @@
 (function(){
 window.urldata=[];
 //urldata.push({name:"",url:""})
-urldata.push({name:"baidu",url:"https://www.baidu.com/s?q1="})
+urldata.push({name:"baidu",url:"https://www.baidu.com/s?q1=",regexp:"i"})
 urldata.push({name:"百度",url:"https://www.baidu.com/s?q1="})
-urldata.push({name:"bilibili",url:"https://www.bilibili.com/"})
+urldata.push({name:"bilibili",url:"https://www.bilibili.com/",regexp:"i"})
 urldata.push({name:"哔哩哔哩",url:"https://www.bilibili.com/"})
-urldata.push({name:"b站",url:"https://www.bilibili.com/"})
-urldata.push({name:"B站",url:"https://www.bilibili.com/"})
+urldata.push({name:"b站",url:"https://www.bilibili.com/",regexp:"i"})
+urldata.push({name:"BV17x411w7KC",url:"https://b23.tv/BV17x411w7KC"})
 urldata.push({name:"钉钉",url:"https://www.dingtalk.com/"})
+urldata.push({name:"submitqianm",url:"/download/apps/smallapp/submit.qm"})
 })()
