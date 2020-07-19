@@ -16,9 +16,9 @@ function guv/*getUrlValue*/(name) {
 var a=urldata;
 for(let i=0;i<a.length;i++){
   let b=a[i].name;
-  if(new RegExp(guv("id"),a[i].case).test(b)||
-  new RegExp(guv("to"),a[i].case).test(b)||
-  new RegExp(guv("name"),a[i].case).test(b)){
+  if(new RegExp(guv("id"),a[i].regexp).test(b)||
+  new RegExp(guv("to"),a[i].regexp).test(b)||
+  new RegExp(guv("name"),a[i].regexp).test(b)){
     location.href=a[i].url;
     return;
   }
