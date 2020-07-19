@@ -1,1 +1,10 @@
+(function(){
 window.urldata=[];
+urldata.push({name:"baidu",url:"https://www.baidu.com/s?q1="})
+urldata.push({name:"百度",url:"https://www.baidu.com/s?q1="})
+urldata.push({name:"bilibili",url:"https://www.bilibili.com/"})
+urldata.push({name:"哔哩哔哩",url:"https://www.bilibili.com/"})
+urldata.push({name:"b站",url:"https://www.bilibili.com/"})
+urldata.push({name:"B站",url:"https://www.bilibili.com/"})
+urldata.push({name:"钉钉",url:"https://www.dingtalk.com/"})
+})()
