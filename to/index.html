@@ -1,1 +1,25 @@
-<script></script>
+<script src="data.js"></script>
+<script>
+(function(){
+function guv/*getUrlValue*/(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            try {
+                return decodeURIComponent(r[2]);
+            } catch (e) {
+                return null;
+            }
+        }
+        return null;
+    }
+var a=urldata;
+for(let i=0;i<a.length;i++){
+  if(a[i].name==guv("id")||a[i].name==guv("name")){
+    location.href=a[i].url;
+    return;
+  }
+}
+document.documentElement.innerHTML=`404`
+})()
+</script>
