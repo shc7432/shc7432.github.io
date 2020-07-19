@@ -22,7 +22,7 @@ for(let i=0;i<a.length;i++){
     location.href=a[i].url;
     return;
   }
-  if(new RegExp(location.href.split("#")[1],a[i].case).test(b)){
+  if(new RegExp(location.href.split("#")[1],a[i].regexp).test(b)){
     location.href=a[i].url;
     return;
   }
