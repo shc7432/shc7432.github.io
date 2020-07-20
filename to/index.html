@@ -15,6 +15,10 @@ function guv/*getUrlValue*/(name) {
     }
 var a=urldata;
 for(let i=0;i<a.length;i++){
+  if(typeof(a[i].function)=="function"){
+    let c=a[i].function();
+    if(c=="return") return; 
+  }
   if(!(new RegExp("#").test(location.href)||new RegExp("?").test(
   location.href))) break;if(!(guv("id")||guv("to")||guv("name"))){
     if(!location.href.split("#")[1]) break;
