@@ -1,6 +1,7 @@
 <script src="data.js"></script>
 <script>
 (function(){
+try{
 function guv/*getUrlValue*/(name) {
         var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
         var r = window.location.search.substr(1).match(reg);
@@ -38,5 +39,10 @@ for(let i=0;i<a.length;i++){
   }
 }
 document.documentElement.innerHTML=`404`
+}catch(e){
+document.documentElement.innerHTML=
+"An error has occurred.Please contact technical support personnel."+
+"<br>Error message: "+e;
+}
 })()
 </script>
