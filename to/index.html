@@ -16,7 +16,6 @@ function guv/*getUrlValue*/(name) {
     }
 var a=urldata;
 document.documentElement.innerHTML="Please wait...";
-setTimeout('document.documentElement.innerHTML="404"',5000);
 for(let i=0;i<a.length;i++){
   if(typeof(a[i].function)=="function"){
     let c=a[i].function();
