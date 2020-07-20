@@ -17,7 +17,7 @@ var a=urldata;
 for(let i=0;i<a.length;i++){
   if(typeof(a[i].function)=="function"){
     let c=a[i].function();
-    if(c=="return") return; 
+    if(c=="break") break; 
   }
   if(!(new RegExp("#").test(location.href)||new RegExp("?").test(
   location.href))) break;if(!(guv("id")||guv("to")||guv("name"))){
