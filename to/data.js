@@ -50,6 +50,7 @@ urldata.push({name:"4天瘦20斤完美计划",url:"/download/apps/smallapp/perfe
 urldata.push({name:"perfect-plan-for-4-days",url:"/download/apps/smallapp/perfect-plan-for-4-days",regexp:"i"})
 urldata.push({name:"perfectPlanFor4Days",url:"/download/apps/smallapp/perfect-plan-for-4-days",regexp:"i"})
 urldata.push({name:"D4panS",url:"/download/apps/smallapp/perfect-plan-for-4-days"})
+urldata.push({name:"makeqrapp",url:"/download/apps/smallapp/more/make-qr"})
 
 //Stop the ordinary method and start the advanced method
 
