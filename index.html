@@ -26,6 +26,7 @@ function getRandom(min, max){return Math.floor(Math.random() * (max - min + 1) )
 function showMessage(msg,t){let a=document.getElementById('messageArea');a.innerHTML=msg;
 setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 </script><style id=headCss>
+* {overflow:auto}
 #messageArea{position:fixed;left:1px;top:1px;background-color:#fff;color:#0a0}
 hr {border: 0 solid; border-top:1px solid #000;}
 a.url {text-decoration:none;color:blue;}
@@ -76,16 +77,19 @@ L  <a href='javascript:'>Resources</a>
      L  <a href='javascript:location.href="/download/apps/anonymous/?"+prompt("Where to visit?","")'>Anonymous access to websites</a>
 </pre>
 
-<form id=siteconfigs hidden>
+<div id=siteconfigs hidden>
 Settings<hr>
 <div style="border:1px solid #ccc;">Site settings
 Language: <select id="langset"><option id=lanseten value="en">English</option><option id=lansetzh value="zh">简体中文</option></select><br>
-Export configuration: <button type=button onclick="outputSettings('site')">Export</button></div><br>
-<div style="border:1px solid #ccc;">Account settings</div>
-<a style="border:1px solid #000;" onclick="this.parentElement.submit()">Submit</a>
-</form>
+Icon automatic color change: <input type=checkbox id="autoicon"><br>
+Welcome word: <input id=Swecwd placeholder="Please enter the content"><br>
+Import/Export configuration: <button type=button onclick="imSettings('site',prompt('Import key is?',''))">Import</button><button type=button onclick="exSettings('site')">Export</button></div><br>
+<div style="border:1px solid #ccc;">Account settings<br>
+No account is logged in.<br></div>
+<a style="border:1px solid #000;" onclick="siteconfigsSave()">Save</a>
+</div>
 
-<h1>Welcome to our website!</h1>
+<h1 id=wecwd>Welcome to our website!</h1>
 
 <hr>
 
