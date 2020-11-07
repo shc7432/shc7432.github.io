@@ -31,7 +31,7 @@ setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 hr {border: 0 solid; border-top:1px solid #000;}
 a.url {text-decoration:none;color:blue;}
 #contents{background-color:#fff;font-family:Arial;position:absolute;width:100%;height:90%;border:1px solid #ccc;left:0;top:10%;z-index:2097151;};
-#siteconfigs{background-color:rgba(255,255,255,0.1);position:absolute;width:100%;height:100%;border:1px solid #ccc;left:0;top:10%;z-index:2097151;};
+#siteconfigs{background-color:rgba(255,255,255,0.1);position:absolute;width:100%;height:100%;border:1px solid #ccc;left:0;top:0;z-index:2097151;};
 </style>
 </head>
 <body>
@@ -77,9 +77,9 @@ L  <a href='javascript:'>Resources</a>
      L  <a href='javascript:location.href="/download/apps/anonymous/?"+prompt("Where to visit?","")'>Anonymous access to websites</a>
 </pre>
 
-<div id=siteconfigs hidden>
-Settings<hr>
-<div style="border:1px solid #ccc;">Site settings
+<div id=siteconfigs style="border:1px solid #ccc;" hidden>
+Settings <a style="color:blue"  onclick="this.parentElement.hidden=1">Close</a><hr>
+<div style="border:1px solid #ccc;">Site settings<br>
 Language: <select id="langset"><option id=lanseten value="en">English</option><option id=lansetzh value="zh">简体中文</option></select><br>
 Icon automatic color change: <input type=checkbox id="autoicon"><br>
 Welcome word: <input id=Swecwd placeholder="Please enter the content"><br>
@@ -117,6 +117,15 @@ try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
 catch(e){localStorage.basicConfigurationOfWebsite="{}"};
 var bc=JSON.parse(localStorage.basicConfigurationOfWebsite);
 lang.innerHTML=m_lang.innerHTML=bc.lang=(bc.lang||"English");
+
+if(bc.lang=="English"){lanseten.selected=1} else {lansetzh.selected=1}
+bc.iconauto=bc.iconauto||'true';
+autoicon.checked=bc.iconauto;
+bc.welcomewd=bc.welcomewd||'Welcome to our website!';
+Swecwd.value=wecwd.innerHTML=bc.welcomewd:
+
+localStorage.basicConfigurationOfWebsite=JSON.stringify(bc);
+window.basicSet=bc;
 })()
 
 textToImg= function (text,fontsize,fontcolor){
@@ -159,11 +168,14 @@ textToImg= function (text,fontsize,fontcolor){
     var dataUrl = canvas.toDataURL('image/png');//注意这里背景透明的话，需要使用png
     return dataUrl;
 }
+function uploadSets(s){
+localStorage.basicConfigurationOfWebsite=JSON.stringify(s);
+}
 function changeIconColor(){
   var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
   icon.src=icon2.src=micon.src=textToImg('The WebSite',20,color);
   functionBtns.style.overflow="auto";
-  setTimeout(changeIconColor,getRandom(5000,10000));
+  if(basicSet.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
 }
 changeIconColor();
 function openContents(bool){
@@ -172,6 +184,9 @@ contents.hidden=0
 }
 function configSettings(bool){
 siteconfigs.hidden=0;
+}
+function exSettings(s){
+prompt('Please save your import key:',localStorage.basicConfigurationOfWebsite);
 }
 </script>
 </body>
