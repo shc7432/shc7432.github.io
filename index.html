@@ -29,7 +29,7 @@ setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 #messageArea{position:fixed;left:1px;top:1px;background-color:#fff;color:#0a0}
 hr {border: 0 solid; border-top:1px solid #000;}
 a.url {text-decoration:none;color:blue;}
-a {color:blue};#contents{font-family:Arial};
+a {color:blue};#contents{font-family:Arial;position:absolute;width:100%;height:90%;border:1px solid #ccc;left:0;top:10%;};
 </style>
 </head>
 <body>
@@ -49,7 +49,8 @@ a {color:blue};#contents{font-family:Arial};
 <a class="url" href="/">Homepage</a> | <a class="url" href="javascript:openContents(true)">Contents</a> | <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
 <br><hr />
 
-<pre id=contents><a href='javascript:;'>Homepage</a>
+<pre id=contents><a onclick="this.parentElement.hidden=1">Close</a><hr>
+<a href='javascript:;'>Homepage</a>
 |- <a href='/mdn-demo-chn/'>mdn demos (language:chn)(Cloning from roy-tian)</a>
 |- <a href='javascript:'>cdn</a>
 |  L  <a href='/cdn/get?filename=jsq2.25.zip&type=download&d=file'>Download jsq2.25.zip</a> 
@@ -144,6 +145,10 @@ function changeIconColor(){
   setTimeout(changeIconColor,getRandom(5000,10000));
 }
 changeIconColor();
+function openContents(bool){
+if(!bool) return !!bool;
+contents.hidden=0
+}
 </script>
 </body>
 </html>
