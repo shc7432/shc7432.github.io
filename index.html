@@ -44,7 +44,7 @@ a .url {text-decoration:none;color:blue;}
 
 <img id=micon hidden style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png">
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
-<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"> | 
+<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"><img id=icon2> | 
 <a class="url" href="/">Homepage</a> | <a class="url" href="javascript:openContents(true)">Contents</a> | <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
 <br><hr />
 
@@ -120,7 +120,7 @@ textToImg= function (text,fontsize,fontcolor){
 }
 function changeIconColor(){
   var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
-  icon.src=micon.src=textToImg('The WebSite',20,color);
+  icon.src=icon2.src=micon.src=textToImg('The WebSite',20,color);
   functionBtns.style.overflow="auto";
   setTimeout(changeIconColor,getRandom(5000,10000));
 }
