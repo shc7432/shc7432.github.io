@@ -34,8 +34,8 @@ a [data-url] {text-decoration:none;color:blue;}
 <body>
 <span id=messageArea></span>
 
-<div id=mFunction hidden style="position:fixed;left:0;top:0;background-color:#fff;z-index:1048576;">
-<a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;width:100%;height:100%;" onclick="this.parentElement.hidden=1">×</a>
+<div id=mFunction hidden style="position:fixed;left:0;top:0;background-color:#fff;z-index:1048576;width:100%;height:100%;">
+<a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a>
 <a data-url href="/">Homepage</a><hr>
 <a data-url href="javascript:openContents(true)">Contents</a><hr>
 <a data-url href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
@@ -108,6 +108,7 @@ function changeIconColor(){
   functionBtns.style.overflow="auto";
   setTimeout(changeIconColor,getRandom(5000,10000));
 }
+changeIconColor();
 </script>
 </body>
 </html>
