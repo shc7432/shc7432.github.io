@@ -28,19 +28,23 @@ setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 </script><style id=headCss>
 #messageArea{position:fixed;left:1px;top:1px;background-color:#fff;color:#0a0}
 hr {border: 0 solid; border-top:1px solid #000;}
+a [data-url] {text-decoration:none;color:blue;}
 </style>
 </head>
 <body>
 <span id=messageArea></span>
 
 <div id=mFunction hidden style="position:fixed;left:0;top:0;background-color:#fff;z-index:1048576;">
-<a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a>
-</div>
+<a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;width:100%;height:100%;" onclick="this.parentElement.hidden=1">×</a>
+<a data-url href="/">Homepage</a><hr>
+<a data-url href="javascript:openContents(true)">Contents</a><hr>
+<a data-url href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
 
 <div id=mainDivElement>
 
+<img id=micon hidden style="position:absolute;z-index:2097151" src="/img/icon_placeholder.png">
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
-<div id=functionBtns><img id=icon src="/img/icon_placeholder.png"></div><hr />
+<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151" src="/img/icon_placeholder.png"></div><hr />
 
 <h1>Welcome to our website!</h1>
 
@@ -48,9 +52,14 @@ hr {border: 0 solid; border-top:1px solid #000;}
 <script id=mainScript>
 (function(){
 if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-functionBtns.hidden=!(mFunctionBtn.hidden=0);
+functionBtns.hidden=!(mFunctionBtn.hidden=micon.hidden=0);
 } 
 mFunctionBtn.onclick=function(){mFunction.hidden=0}
+
+try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
+catch(e){localStorage.basicConfigurationOfWebsite="{}"};
+var bc=JSON.parse(localStorage.basicConfigurationOfWebsite);
+lang.innerHTML=bc.lang=(bc.lang||"English");
 })()
 
 textToImg= function (text,fontsize,fontcolor){
@@ -95,7 +104,7 @@ textToImg= function (text,fontsize,fontcolor){
 }
 function changeIconColor(){
   var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
-  icon.src=textToImg('The WebSite',20,color);
+  icon.src=micon.src=textToImg('The WebSite',20,color);
   functionBtns.style.overflow="auto";
   setTimeout(changeIconColor,getRandom(5000,10000));
 }
