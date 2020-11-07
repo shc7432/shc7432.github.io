@@ -28,7 +28,7 @@ setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 </script><style id=headCss>
 #messageArea{position:fixed;left:1px;top:1px;background-color:#fff;color:#0a0}
 hr {border: 0 solid; border-top:1px solid #000;}
-a [data-url] {text-decoration:none;color:blue;}
+a .url {text-decoration:none;color:blue;}
 </style>
 </head>
 <body>
@@ -36,15 +36,15 @@ a [data-url] {text-decoration:none;color:blue;}
 
 <div id=mFunction hidden style="position:fixed;left:0;top:0;background-color:#fff;z-index:1048576;width:100%;height:100%;">
 <a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a>
-<a data-url href="/">Homepage</a><hr>
-<a data-url href="javascript:openContents(true)">Contents</a><hr>
-<a data-url href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
+<a class="url" href="/">Homepage</a><hr>
+<a class="url" href="javascript:openContents(true)">Contents</a><hr>
+<a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
 
 <div id=mainDivElement>
 
-<img id=micon hidden style="position:absolute;z-index:2097151" src="/img/icon_placeholder.png">
+<img id=micon hidden style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png">
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
-<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151" src="/img/icon_placeholder.png"></div><hr />
+<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"></div><hr />
 
 <h1>Welcome to our website!</h1>
 
