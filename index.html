@@ -50,13 +50,27 @@ a .url {text-decoration:none;color:blue;}
 
 <h1>Welcome to our website!</h1>
 
+<hr>
+
+<a id=totable href="/table/index/index.html" hidden>Desktop website | </a><a href="/about.xhtml" onclick="event.preventDefault();">About us</a>
+
 </div>
 <script id=mainScript>
 (function(){
-if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-functionBtns.hidden=!(mFunctionBtn.hidden=micon.hidden=0);
+if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)&&(!getUrlValue('tableSite'))) {
+functionBtns.hidden=!(mFunctionBtn.hidden=micon.hidden=totable.hidden=0);
 } 
-mFunctionBtn.onclick=function(){mFunction.hidden=0}
+
+mFunctionBtn.onclick=function(){
+  mFunction.hidden=0
+}
+totable.onclick=function(e){
+  e.preventDefault();
+  var f=document.createElement('FORM'),ipt=document.createElement('input');
+  ipt.name="tableSite";ipt.value=!!1;
+  f.appendChild(ipt);
+  f.submit();
+}
 
 try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
 catch(e){localStorage.basicConfigurationOfWebsite="{}"};
