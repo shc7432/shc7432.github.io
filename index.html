@@ -38,13 +38,15 @@ a .url {text-decoration:none;color:blue;}
 <a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a>
 <a class="url" href="/">Homepage</a><hr>
 <a class="url" href="javascript:openContents(true)">Contents</a><hr>
-<a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
+<a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a></div>
 
 <div id=mainDivElement>
 
 <img id=micon hidden style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png">
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
-<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"></div><hr />
+<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"> | 
+<a class="url" href="/">Homepage</a> | <a class="url" href="javascript:openContents(true)">Contents</a> | <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
+<br><hr />
 
 <h1>Welcome to our website!</h1>
 
@@ -59,7 +61,7 @@ mFunctionBtn.onclick=function(){mFunction.hidden=0}
 try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
 catch(e){localStorage.basicConfigurationOfWebsite="{}"};
 var bc=JSON.parse(localStorage.basicConfigurationOfWebsite);
-lang.innerHTML=bc.lang=(bc.lang||"English");
+lang.innerHTML=m_lang.innerHTML=bc.lang=(bc.lang||"English");
 })()
 
 textToImg= function (text,fontsize,fontcolor){
