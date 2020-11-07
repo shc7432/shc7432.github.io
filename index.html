@@ -30,6 +30,7 @@ setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 hr {border: 0 solid; border-top:1px solid #000;}
 a.url {text-decoration:none;color:blue;}
 #contents{background-color:#fff;font-family:Arial;position:absolute;width:100%;height:90%;border:1px solid #ccc;left:0;top:10%;z-index:2097151;};
+#siteconfigs{background-color:rgba(255,255,255,0.1);position:absolute;width:100%;height:100%;border:1px solid #ccc;left:0;top:10%;z-index:2097151;};
 </style>
 </head>
 <body>
@@ -39,14 +40,21 @@ a.url {text-decoration:none;color:blue;}
 <a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a><br><br>
 <a class="url" href="/">Homepage</a><hr>
 <a class="url" href="javascript:openContents(true)">Contents</a><hr>
-<a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a></div>
+<a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a><hr>
+<a class="url" href="#/settings/" onclick="configSettings(true)">Settings</a><hr>
+<a class="url" href="javascript:logtoggle(true)">Sign in</a></div>
 
 <div id=mainDivElement>
 
 <img id=micon hidden style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png">
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
 <div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"><img id=icon2> | 
-<a class="url" href="/">Homepage</a> | <a class="url" href="javascript:openContents(true)">Contents</a> | <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a></div>
+<a class="url" href="/">Homepage</a> | 
+<a class="url" href="javascript:openContents(true)">Contents</a> | 
+<a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a> | 
+<a class="url" href="javascript:configSettings(true)">Settings</a> | 
+<a class="url" href="javascript:logtoggle(true)">Sign in</a>
+</div>
 <br><hr />
 
 <pre id=contents hidden><a onclick="this.parentElement.hidden=1">Close</a><hr>
@@ -67,6 +75,15 @@ L  <a href='javascript:'>Resources</a>
      |  |- <a href='/download/apps/smallapp/color-selected'>Color picker</a-->
      L  <a href='javascript:location.href="/download/apps/anonymous/?"+prompt("Where to visit?","")'>Anonymous access to websites</a>
 </pre>
+
+<form id=siteconfigs hidden>
+Settings<hr>
+<div style="border:1px solid #ccc;">Site settings
+Language: <select id="langset"><option id=lanseten value="en">English</option><option id=lansetzh value="zh">简体中文</option></select><br>
+Export configuration: <button type=button onclick="outputSettings('site')">Export</button></div><br>
+<div style="border:1px solid #ccc;">Account settings</div>
+<a style="border:1px solid #000;" onclick="this.parentElement.submit()">Submit</a>
+</form>
 
 <h1>Welcome to our website!</h1>
 
@@ -148,6 +165,9 @@ changeIconColor();
 function openContents(bool){
 if(!bool) return !!bool;
 contents.hidden=0
+}
+function configSettings(bool){
+siteconfigs.hidden=0;
 }
 </script>
 </body>
