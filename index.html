@@ -39,9 +39,9 @@ a.url {text-decoration:none;color:blue;}
 <div id=mFunction hidden style="position:absolute;left:0;top:0;background-color:#fff;z-index:1048576;width:100%;height:100%;">
 <a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a><br><br>
 <a class="url" href="/">Homepage</a><hr>
-<a class="url" href="#/contents/" onclick="openContents(true)">Contents</a><hr>
+<a class="url" href="#/contents/">Contents</a><hr>
 <a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a><hr>
-<a class="url" href="#/settings/" onclick="configSettings(true)">Settings</a><hr>
+<a class="url" href="#/settings/">Settings</a><hr>
 <a class="url" href="javascript:logtoggle(true)">Sign in</a></div>
 
 <div id=mainDivElement>
@@ -50,9 +50,9 @@ a.url {text-decoration:none;color:blue;}
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
 <div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"><img id=icon2> | 
 <a class="url" href="/">Homepage</a> | 
-<a class="url" href="#/contents/" onclick="openContents(true)">Contents</a> | 
+<a class="url" href="#/contents/">Contents</a> | 
 <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a> | 
-<a class="url" href="#/settings/" onclick="configSettings(true)">Settings</a> | 
+<a class="url" href="#/settings/">Settings</a> | 
 <a class="url" href="javascript:logtoggle(true)">Sign in</a>
 </div>
 <br><hr />
@@ -181,13 +181,6 @@ function changeIconColor(){
   if(basicset.siteconfig.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
 }
 changeIconColor();
-function openContents(bool){
-if(!bool) return !!bool;
-contents.hidden=0
-}
-function configSettings(bool){
-siteconfigs.hidden=0;
-}
 function exSettings(s){
 prompt('Please save your import key:',JSON.stringify(JSON.parse(localStorage.basicConfigurationOfWebsite).siteconfig));
 }
