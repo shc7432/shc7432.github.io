@@ -31,7 +31,6 @@ setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
 hr {border: 0 solid; border-top:1px solid #000;}
 a.url {text-decoration:none;color:blue;}
 #contents{background-color:#fff;font-family:Arial;position:absolute;width:100%;height:90%;border:1px solid #ccc;left:0;top:10%;z-index:2097151;};
-#siteconfigs{background-color:rgba(255,255,255,0.1);position:absolute;width:100%;height:100%;border:1px solid #ccc;left:0;top:0;z-index:2097151;};
 </style>
 </head>
 <body>
@@ -59,7 +58,7 @@ a.url {text-decoration:none;color:blue;}
 <br><hr />
 
 <pre id=contents hidden><a onclick="this.parentElement.hidden=1">Close</a><hr>
-<a href='javascript:;'>Homepage</a>
+<a href='javascript:void(0)'>Homepage</a>
 |- <a href='/mdn-demo-chn/'>mdn demos (language:chn)(Cloning from roy-tian)</a>
 |- <a href='javascript:'>cdn</a>
 |  L  <a href='/cdn/get?filename=jsq2.25.zip&type=download&d=file'>Download jsq2.25.zip</a> 
@@ -77,7 +76,7 @@ L  <a href='javascript:'>Resources</a>
      L  <a href='javascript:location.href="/download/apps/anonymous/?"+prompt("Where to visit?","")'>Anonymous access to websites</a>
 </pre>
 
-<div id=siteconfigs style="border:1px solid #ccc;" hidden>
+<div id=siteconfigs style="background-color:rgba(255,255,255,0.1);position:absolute;width:100%;height:100%;left:0;top:0;z-index:2097151;border:1px solid #ccc;" hidden>
 Settings <a style="color:blue"  onclick="this.parentElement.hidden=1">Close</a><hr>
 <div style="border:1px solid #ccc;">Site settings<br>
 Language: <select id="langset"><option id=lanseten value="en">English</option><option id=lansetzh value="zh">简体中文</option></select><br>
@@ -86,7 +85,7 @@ Welcome word: <input id=Swecwd placeholder="Please enter the content"><br>
 Import/Export configuration: <button type=button onclick="imSettings('site',prompt('Import key is?',''))">Import</button><button type=button onclick="exSettings('site')">Export</button></div><br>
 <div style="border:1px solid #ccc;">Account settings<br>
 No account is logged in.<br></div>
-<a style="border:1px solid #000;" onclick="siteconfigsSave()">Save</a>
+<button onclick="siteconfigsSave()">Save</button> <button onclick="this.parentElement.hidden=1">Close</button>
 </div>
 
 <h1 id=wecwd>Welcome to our website!</h1>
@@ -125,7 +124,14 @@ bc.welcomewd=bc.welcomewd||'Welcome to our website!';
 Swecwd.value=wecwd.innerHTML=bc.welcomewd;
 
 localStorage.basicConfigurationOfWebsite=JSON.stringify(bc);
-window.basicSet=bc;
+Object.defineProperty(window,'basicset',{
+  get: function(){
+    return JSON.parse(localStorage.basicConfigurationOfWebsite);
+  } 
+  set: function(v){
+    localStorage.basicConfigurationOfWebsite=JSON.stringify(v);
+  }
+})
 })()
 
 textToImg= function (text,fontsize,fontcolor){
@@ -168,9 +174,6 @@ textToImg= function (text,fontsize,fontcolor){
     var dataUrl = canvas.toDataURL('image/png');//注意这里背景透明的话，需要使用png
     return dataUrl;
 }
-function uploadSets(s){
-localStorage.basicConfigurationOfWebsite=JSON.stringify(s);
-}
 function changeIconColor(){
   var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
   icon.src=icon2.src=micon.src=textToImg('The WebSite',20,color);
@@ -186,7 +189,12 @@ function configSettings(bool){
 siteconfigs.hidden=0;
 }
 function exSettings(s){
-prompt('Please save your import key:',localStorage.basicConfigurationOfWebsite);
+prompt('Please save your import key:',JSON.stringify(JSON.parse(localStorage.basicConfigurationOfWebsite).siteconfig));
+}
+function imSettings(fw,str){
+let a=JSON.parse(localStorage.basicConfigurationOfWebsite);
+a.siteconfig=JSON.parse(str);
+basicset=a;
 }
 </script>
 </body>
