@@ -125,10 +125,10 @@ Swecwd.value=wecwd.innerHTML=bc.welcomewd;
 
 localStorage.basicConfigurationOfWebsite=JSON.stringify(bc);
 Object.defineProperty(window,'basicset',{
-  get: function(){
+  get() {
     return JSON.parse(localStorage.basicConfigurationOfWebsite);
   } 
-  set: function(v){
+  set(v) {
     localStorage.basicConfigurationOfWebsite=JSON.stringify(v);
   }
 })
