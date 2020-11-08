@@ -39,7 +39,7 @@ a.url {text-decoration:none;color:blue;}
 <div id=mFunction hidden style="position:absolute;left:0;top:0;background-color:#fff;z-index:1048576;width:100%;height:100%;">
 <a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a><br><br>
 <a class="url" href="/">Homepage</a><hr>
-<a class="url" href="javascript:openContents(true)">Contents</a><hr>
+<a class="url" href="#/contents/" onclick="openContents(true)">Contents</a><hr>
 <a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a><hr>
 <a class="url" href="#/settings/" onclick="configSettings(true)">Settings</a><hr>
 <a class="url" href="javascript:logtoggle(true)">Sign in</a></div>
@@ -50,9 +50,9 @@ a.url {text-decoration:none;color:blue;}
 <a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
 <div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"><img id=icon2> | 
 <a class="url" href="/">Homepage</a> | 
-<a class="url" href="javascript:openContents(true)">Contents</a> | 
+<a class="url" href="#/contents/" onclick="openContents(true)">Contents</a> | 
 <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a> | 
-<a class="url" href="javascript:configSettings(true)">Settings</a> | 
+<a class="url" href="#/settings/" onclick="configSettings(true)">Settings</a> | 
 <a class="url" href="javascript:logtoggle(true)">Sign in</a>
 </div>
 <br><hr />
@@ -63,13 +63,13 @@ a.url {text-decoration:none;color:blue;}
 |- <a href='javascript:'>cdn</a>
 |  L  <a href='/cdn/get?filename=jsq2.25.zip&type=download&d=file'>Download jsq2.25.zip</a> 
 |- <a href='javascript:'>Public resources</a>
-|  |- <a href='javascript:'>Strange things</a>
+|  |- <a href='javascript:;'>Strange things</a>
 |  |  |- <a href='/public/Strange-things/A-sudden-whim-to/YYYYMMDDTHHMMSS/20200314T082623/demo/20200314T144638/up-pig-women-clothes/'>up pig women clothes</a>
 |  |  L  <a href='/public/Strange-things/A-sudden-whim-to/YYYYMMDDTHHMMSS/20200310T203536/SN/01/'>Submit demo</a>
 |  L  <a href='//github.com/shc7432/public/something/'>JavaScript Resources</a>
 L  <a href='javascript:'>Resources</a>
    L <a href='javascript:'>Application</a>
-     |- <a href='/download/apps/smallapp/'>Smallapp</a><!--
+     |- <a href='#/iframe-browser/url//download/apps/smallapp/'>Smallapp</a><!--
      |  |- <a href='/download/apps/smallapp/at-bilibili-user'>@bilibili-user</a>
      |  |- <a href='/download/apps/smallapp/call-forwarding'>Setting up call forwarding</a>
      |  |- <a href='/download/apps/smallapp/color-selected'>Color picker</a-->
@@ -77,7 +77,7 @@ L  <a href='javascript:'>Resources</a>
 </pre>
 
 <div id=siteconfigs style="background-color:rgba(255,255,255,0.999);position:absolute;width:100%;height:100%;left:0;top:0;z-index:2097151;border:1px solid #ccc;" hidden>
-Settings <a style="color:blue"  onclick="this.parentElement.hidden=1">Close</a><hr>
+Settings <a style="color:blue" onclick="this.parentElement.hidden=1;location.href='#'">Close</a><hr>
 <div style="border:1px solid #ccc;">Site settings<br>
 Language: <select id="langset"><option id=lanseten value="en">English</option><option id=lansetzh value="zh">简体中文</option></select><br>
 Icon automatic color change: <input type=checkbox id="autoicon"><br>
@@ -85,7 +85,7 @@ Welcome word: <input id=Swecwd placeholder="Please enter the content"><br>
 Import/Export configuration: <button type=button onclick="imSettings('site',prompt('Import key is?',''))">Import</button><button type=button onclick="exSettings('site')">Export</button></div><br>
 <div style="border:1px solid #ccc;">Account settings<br>
 No account is logged in.<br></div>
-<button onclick="siteconfigsSave()">Save</button> <button onclick="this.parentElement.hidden=1">Close</button>
+<button onclick="siteconfigsSave()">Save</button> <button onclick="this.parentElement.hidden=1;location.href='#'">Close</button>
 </div>
 
 <h1 id=wecwd>Welcome to our website!</h1>
@@ -122,8 +122,7 @@ totable.onclick=function(e){
   f.submit();
 }
 
-var bc=basicset
-.siteconfig;
+var bc=basicset.siteconfig;
 lang.innerHTML=m_lang.innerHTML=bc.lang=(bc.lang||"English");
 
 if(bc.lang=="English"){lanseten.selected=1} else {lansetzh.selected=1}
@@ -206,6 +205,14 @@ let b={siteconfig:a,userconfig:basicset.userconfig};
 basicset=a;
 showMessage('Config Saved.');
 if(confirm('Config saved.\nThe webpage needs to be restarted to apply these changes.\nReload?')) location.reload(!!1);
+}
+function checkPageUrl(){
+try{let pageurl=location.href.split('#');pageurl=pageurl[pageurl.length-1];
+if(!pageurl.indexOf('/settings/')) siteconfigs.hidden=0;
+if(!pageurl.indexOf('/contents/')) contents.hidden=0;
+
+}catch(e){true};
+setTimeout(checkPageUrl,500);
 }
 </script>
 </body>
