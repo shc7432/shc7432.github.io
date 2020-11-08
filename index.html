@@ -127,7 +127,7 @@ localStorage.basicConfigurationOfWebsite=JSON.stringify(bc);
 Object.defineProperty(window,'basicset',{
   get() {
     return JSON.parse(localStorage.basicConfigurationOfWebsite);
-  } 
+  } ,
   set(v) {
     localStorage.basicConfigurationOfWebsite=JSON.stringify(v);
   }
