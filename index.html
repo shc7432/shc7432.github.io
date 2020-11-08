@@ -114,7 +114,7 @@ totable.onclick=function(e){
 
 try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
 catch(e){localStorage.basicConfigurationOfWebsite="{}"};
-var bc=JSON.parse(localStorage.basicConfigurationOfWebsite);
+var bc=JSON.parse(localStorage.basicConfigurationOfWebsite).siteconfig;
 lang.innerHTML=m_lang.innerHTML=bc.lang=(bc.lang||"English");
 
 if(bc.lang=="English"){lanseten.selected=1} else {lansetzh.selected=1}
@@ -178,7 +178,7 @@ function changeIconColor(){
   var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
   icon.src=icon2.src=micon.src=textToImg('The WebSite',20,color);
   functionBtns.style.overflow="auto";
-  if(basicSet.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
+  if(basicSet.siteconfig.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
 }
 changeIconColor();
 function openContents(bool){
@@ -195,6 +195,15 @@ function imSettings(fw,str){
 let a=JSON.parse(localStorage.basicConfigurationOfWebsite);
 a.siteconfig=JSON.parse(str);
 basicset=a;
+}
+function siteconfigsSave(){
+let a={};
+a.welcomewd=Swecwd.value;
+a.iconauto=autoicon.checked;
+let b={siteconfig:a,userconfig:basicset.userconfig};
+basicset=a;
+showMessage('Config Saved.');
+if(confirm('Config saved.\nThe webpage needs to be restarted to apply these changes.\nReload?')) location.reload(!!1);
 }
 </script>
 </body>
