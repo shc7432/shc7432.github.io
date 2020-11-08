@@ -97,6 +97,16 @@ No account is logged in.<br></div>
 </div>
 <script id=mainScript>
 (function(){
+try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
+catch(e){localStorage.basicConfigurationOfWebsite="{}"};
+Object.defineProperty(window,'basicset',{
+  get() {
+    return JSON.parse(localStorage.basicConfigurationOfWebsite);
+  } ,
+  set(v) {
+    localStorage.basicConfigurationOfWebsite=JSON.stringify(v);
+  }
+});
 if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)&&(!getUrlValue('tableSite'))) {
 functionBtns.hidden=!(mFunctionBtn.hidden=micon.hidden=totable.hidden=0);
 } 
@@ -112,9 +122,8 @@ totable.onclick=function(e){
   f.submit();
 }
 
-try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
-catch(e){localStorage.basicConfigurationOfWebsite="{}"};
-var bc=JSON.parse(localStorage.basicConfigurationOfWebsite).siteconfig;
+var bc=basicset
+.siteconfig;
 lang.innerHTML=m_lang.innerHTML=bc.lang=(bc.lang||"English");
 
 if(bc.lang=="English"){lanseten.selected=1} else {lansetzh.selected=1}
@@ -123,15 +132,7 @@ autoicon.checked=bc.iconauto;
 bc.welcomewd=bc.welcomewd||'Welcome to our website!';
 Swecwd.value=wecwd.innerHTML=bc.welcomewd;
 
-localStorage.basicConfigurationOfWebsite=JSON.stringify(bc);
-Object.defineProperty(window,'basicset',{
-  get() {
-    return JSON.parse(localStorage.basicConfigurationOfWebsite);
-  } ,
-  set(v) {
-    localStorage.basicConfigurationOfWebsite=JSON.stringify(v);
-  }
-})
+basicset=JSON.stringify({siteconfig:bc,userconfig:basicset.userconfig});
 })()
 
 textToImg= function (text,fontsize,fontcolor){
@@ -178,7 +179,7 @@ function changeIconColor(){
   var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
   icon.src=icon2.src=micon.src=textToImg('The WebSite',20,color);
   functionBtns.style.overflow="auto";
-  if(basicSet.siteconfig.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
+  if(basicset.siteconfig.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
 }
 changeIconColor();
 function openContents(bool){
@@ -200,6 +201,7 @@ function siteconfigsSave(){
 let a={};
 a.welcomewd=Swecwd.value;
 a.iconauto=autoicon.checked;
+a.lang=langset.value;
 let b={siteconfig:a,userconfig:basicset.userconfig};
 basicset=a;
 showMessage('Config Saved.');
