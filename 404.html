@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" name="viewport" content="width=device-width" />
-<title>404 File not found</title>   
-<script id=headScript>window.getip=window.getIP=function(){return returnCitySN.cip;}
-function getRandom(min, max){return Math.floor(Math.random() * (max - min + 1) ) + min;}
-function showMessage(msg,t){let a=document.getElementById('messageArea');a.innerHTML=msg;
-setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
-</script><style id=headCss>
-#messageArea{position:fixed;left:1px;top:1px;background-color:#fff;color:#0a0}
-</style>
-</head>
-<body>
-<span id=messageArea></span>
-<div id=mainDivElement>
-<h1 id=h1el><center>404</center></h1>
-<big>Don't find anything here!</big>
-<div>Try other?<br><a href="javascript:window.history.back();">Go back</a> or 
-<a href="javascript:location.href='/'">Return to the home page</a></div>
 
-<small>This is a gh-page page, published by a developer on github.  Copyright infringement must be investigated.<br>
-If you came to this page via a link from this website, please <a href="https://github.com/shc7432/shc7432.github.io/issues">submit an issue here</a>. 
-If you don’t know the format of an issue, please <a href="javascript:alert('Title: A useless link\nContent: Previous links')">click here</a></small>
-</div>
-<script id=mainScript>
-(function(){
-})()
-</script>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width" />
+    <title>404 File not found</title>
+    <script id=headScript>
+        window.getip = window.getIP = function () { return returnCitySN.cip; }
+        function getRandom(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+        function showMessage(msg, t) {
+            let a = document.getElementById('messageArea'); a.innerHTML = msg;
+            setTimeout(function () { a.innerHTML = "" }, ((!!(+t)) ? (t * 1000) : 1500))
+        }
+    </script>
+    <style id=headCss>
+        #messageArea {
+            position: fixed;
+            left: 1px;
+            top: 1px;
+            background-color: #fff;
+            color: #0a0
+        }
+    </style>
+</head>
+
+<body>
+    <span id=messageArea></span>
+    <div id=mainDivElement>
+        <h1 id=h1el>
+            <center>404</center>
+        </h1>
+        <big><b>Cannot</b> find anything here!</big>
+        <div>Try other?<br><a href="javascript:window.history.back();">Go back</a> or
+            <a href="javascript:location.href='/'">Return to the home page</a>
+        </div>
+
+        <small>This is a gh-page page, published by a developer on github. Copyright infringement must be
+            investigated.<br>
+            If you came to this page via a link from this website, please <a
+                href="https://github.com/shc7432/shc7432.github.io/issues">submit an issue here</a>.
+            If you don’t know the format of an issue, please <a
+                href="javascript:alert('Title: A useless link\nContent: Previous links')">click here</a></small>
+    </div>
+    <script id=mainScript>
+        (function () {
+            
+        })()
+    </script>
 </body>
+
 </html>
