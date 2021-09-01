@@ -12,6 +12,7 @@
             setTimeout(function () { a.innerHTML = "" }, ((!!(+t)) ? (t * 1000) : 1500))
         }
     </script>
+    <script src="/cdn/js/stools/copytext.js"></script>
     <script src="/public/something/dialog.js"></script>
     <style id=headCss>
         #messageArea {
@@ -45,7 +46,7 @@
     <div id=issueformat hidden>
         <dialogtitle>New issue<a class=closebtn style="font-family: pixel">x</a></dialogtitle>
         <input placeholder="Title" value="An invalid link" style="width:98%" /><br />
-        <div contenteditable style="border: 1px solid #ccc;overflow:auto">I found an invalid link.<br />
+        <div id=t_e contenteditable style="border: 1px solid #ccc;overflow:auto">I found an invalid link.<br />
             Invalid URL: <script>document.write(location.href)</script><br />
             I came from: [[Last Url]]</div>
         <button style="color: #ffffff;
@@ -53,7 +54,11 @@
             border-color: rgba(27,31,36,0.15);
             box-shadow: 0 1px 0 rgba(27,31,36,0.1),inset 0 1px 0 rgba(255,255,255,0.03);
             margin: 10px 10px;
-            cursor: pointer;" onclick="location.href='https://github.com/shc7432/shc7432.github.io/issues'">Submit</button>
+            cursor: pointer;" 
+            onclick="copytext(t_e.innerText);
+                     location.href='https://github.com/shc7432/shc7432.github.io/issues/new?title=An invalid link'
+            ">
+            Submit</button>
     </div>
     <script id=mainScript>
         (function () {
