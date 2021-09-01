@@ -12,6 +12,7 @@
             setTimeout(function () { a.innerHTML = "" }, ((!!(+t)) ? (t * 1000) : 1500))
         }
     </script>
+    <script src="/public/something/stools.js"></script>
     <script src="/cdn/js/stools/copytext.js"></script>
     <script src="/public/something/dialog.js"></script>
     <style id=headCss>
@@ -55,7 +56,7 @@
             box-shadow: 0 1px 0 rgba(27,31,36,0.1),inset 0 1px 0 rgba(255,255,255,0.03);
             margin: 10px 10px;
             cursor: pointer;" 
-            onclick="copytext(t_e.innerText);
+            onclick="sTools.copytext(t_e.innerText);
                      location.href='https://github.com/shc7432/shc7432.github.io/issues/new?title=An invalid link'
             ">
             Submit</button>
