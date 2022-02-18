@@ -1,64 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<title>Welcome to the website</title>   
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://shc7432.github.io/public/something/stools.js"></script>
-<!--script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script-->
-<script src="https://shc7432.github.io/public/getLinkInput/getLinkInput.js"></script>
-<!--link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"-->
-<script src="https://shc0743.github.io/crypto-js/core.js"></script>
-<script src="https://shc0743.github.io/crypto-js/enc-base64.js"></script>
-<script src="https://shc0743.github.io/crypto-js/enc-hex.js"></script>
-<script src="https://shc0743.github.io/crypto-js/enc-utf8.js"></script>
-<script src="https://shc0743.github.io/crypto-js/enc-utf16.js"></script>
-<script src="https://shc0743.github.io/crypto-js/crypto-js.js"></script>
-<script src="https://shc0743.github.io/crypto-js/aes.js"></script>
-<script src="https://shc0743.github.io/crypto-js/md5.js"></script>
-<script src="https://shc0743.github.io/crypto-js/sha1.js"></script>
-<script src="https://shc0743.github.io/crypto-js/sha512.js"></script>
-<script src="https://pv.sohu.com/cityjson"></script>
-<script id=headScript>window.getip=window.getIP=function(){return returnCitySN.cip;}
-function getRandom(min, max){return Math.floor(Math.random() * (max - min + 1) ) + min;}
-function showMessage(msg,t){let a=document.getElementById('messageArea');a.innerHTML=msg;
-setTimeout(function(){a.innerHTML=""},((!!(+t))?(t*1000):1500))}
-</script><style id=headCss>
-* {overflow:auto}
-#messageArea{position:fixed;left:1px;top:1px;background-color:#fff;color:#0a0}
-hr {border: 0 solid; border-top:1px solid #000;}
-a.url {text-decoration:none;color:blue;}
-#contents{background-color:#fff;font-family:Arial;position:absolute;width:100%;height:90%;border:1px solid #ccc;left:0;top:10%;z-index:2097151;};
-</style>
+    <meta charset="utf-8" />
+    <title>Welcome to the website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A little website by shc7432" />
+
+    <script src="https://shc7432.github.io/public/something/stools.js"></script>
+    <script src="https://shc7432.github.io/public/something/dialog.js"></script>
+    <script src="https://shc7432.github.io/public/getLinkInput/getLinkInput.js"></script>
+    <script src="https://pv.sohu.com/cityjson"></script>
+
+    <script>
+        window.getip = window.getIP = function () { return returnCitySN.cip; }
+        function getRandom(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+    </script>
+
+    <style>
+        * {
+            overflow: auto
+        }
+
+        #messageArea {
+            position: fixed;
+            left: 1px;
+            top: 1px;
+            background-color: #fff;
+            color: #0a0
+        }
+
+        hr {
+            border: 0 solid;
+            border-top: 1px solid #000;
+        }
+
+        a, button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        a[href] {
+            color: blue;
+        }
+
+        #contents {
+            /* background-color: #fff;
+            position: absolute;
+            width: 100%;
+            height: 90%;
+            border: 1px solid #ccc;
+            left: 0;
+            top: 10%; */
+            font-family: Arial;
+            z-index: 68;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        /* #icon {
+            width: 20px;
+            height: 20px;
+        } */
+        #icon2 {
+            display: inline-block;
+            /* height: 20px; */
+            /* width: 20px; */
+        }
+
+        #siteconfigs {
+            /* background-color: rgba(255,255,255,0.999);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0; top: 0; */
+            z-index: 2097151;
+            /* border: 1px solid #ccc; */
+        }
+        #mFunction {
+            position: absolute;
+            left: 0; top: 0;
+            background-color: #fff;
+            z-index: 1048576;
+            width: 100%;
+            height: 100%;
+        }
+        #mFunction .bnt_close {
+            position: fixed;
+            right: 1px; top: 1px;
+            background-color: #fff;
+            border: 1px solid;
+            z-index: 1048578;
+        }
+        #mFunctionBtn {
+            position:fixed;
+            right:1px; top:1px;
+            background-color:#fff;
+            border:1px solid;
+            z-index:1048575;
+        }
+
+        .icon {
+            position: absolute;
+            z-index: 2097151;
+            background-color: #fff
+        }
+
+        #cookie_ch {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            /* display: block; */
+            width: 100%;
+            height: auto;
+            z-index: 2097153;
+            background-color: rgba(57, 165, 197, 0.3);
+            text-align: center;
+        }
+        #cookie_ch .text {
+            font-size: larger;
+            margin-bottom: 10px;
+        }
+        #cookie_ch .btn_group {
+            margin-bottom: 6px;
+        }
+        .cookie_ch-background {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: #ffffff;
+            opacity: 0.5;
+            z-index: 2097152;
+            cursor: not-allowed;
+        }
+        #cookie_ch_cu {
+            z-index: 2097153 !important;
+            text-align: center;
+        }
+        #cookie_ch_cu button.accept {
+            font-size: x-large;
+        }
+
+        .btn-recommended {
+            background:rgba(12, 218, 173, 0.3);
+        }
+    </style>
 </head>
+
 <body>
-<span id=messageArea></span>
+    <div id=mFunction hidden>
+        <a class=btn_close onclick="this.parentElement.hidden=1">×</a><br><br>
+        <a class="url" href="/">Homepage</a>
+        <hr>
+        <a class="url" href="#/contents/">Contents</a>
+        <hr>
+        <a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a>
+        <hr>
+        <a class="url" href="#/settings/">Settings</a>
+        <hr>
+        <a class="url" href="javascript:logtoggle(true)">Sign in</a>
+    </div>
 
-<div id=mFunction hidden style="position:absolute;left:0;top:0;background-color:#fff;z-index:1048576;width:100%;height:100%;">
-<a style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048578;" onclick="this.parentElement.hidden=1">×</a><br><br>
-<a class="url" href="/">Homepage</a><hr>
-<a class="url" href="#/contents/">Contents</a><hr>
-<a class="url" href="javascript:changeLang(true)">Language: <a id=m_lang>Default</a></a><hr>
-<a class="url" href="#/settings/">Settings</a><hr>
-<a class="url" href="javascript:logtoggle(true)">Sign in</a></div>
+    <main>
 
-<div id=mainDivElement>
+        <img id=micon hidden class="icon" alt="The Website"
+             data-src="https://avatars.githubusercontent.com/u/60645811?s=200&v=4">
+        <a id=mFunctionBtn hidden>≡</a>
+        
+        <div id=functionBtns>
+            <img id=icon class="icon" alt="The Website"
+                 src="">
+            <img id=icon2> |
+            <a class="url" href="/">Homepage</a> |
+            <a class="url" href="#/contents/">Contents</a> |
+            <a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a> |
+            <a class="url" href="#/settings/">Settings</a> |
+            <a class="url" href="javascript:logtoggle(true)">Sign in</a>
+        </div>
+        <br>
+        <hr />
 
-<img id=micon hidden style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png">
-<a id=mFunctionBtn hidden style="position:fixed;right:1px;top:1px;background-color:#fff;border:1px solid;z-index:1048575;">≡</a>
-<div id=functionBtns><img id=icon style="position:absolute;z-index:2097151;background-color:#fff" src="/img/icon_placeholder.png"><img id=icon2> | 
-<a class="url" href="/">Homepage</a> | 
-<a class="url" href="#/contents/">Contents</a> | 
-<a class="url" href="javascript:changeLang(true)">Language: <a id=lang>Default</a></a> | 
-<a class="url" href="#/settings/">Settings</a> | 
-<a class="url" href="javascript:logtoggle(true)">Sign in</a>
-</div>
-<br><hr />
-
-<pre id=contents hidden><a onclick="this.parentElement.hidden=1">Close</a><hr>
-<a href='javascript:void(0)'>Homepage</a>
+        <!-- Bad format :( -->
+        <pre id=contents hidden><dialogtitle>Contents<a class=closebtn>x</a></dialogtitle><hr><a href='javascript:void(0)'>Homepage</a>
 |- <a href='/mdn-demo-chn/'>mdn demos (language:chn)(Cloning from roy-tian)</a>
 |- <a href='javascript:'>cdn</a>
 |  L  <a href='/cdn/get?filename=jsq2.25.zip&type=download&d=file'>Download jsq2.25.zip</a> 
@@ -66,148 +195,74 @@ a.url {text-decoration:none;color:blue;}
 |  |- <a href='javascript:;'>Strange things</a>
 |  |  |- <a href='/public/Strange-things/A-sudden-whim-to/YYYYMMDDTHHMMSS/20200314T082623/demo/20200314T144638/up-pig-women-clothes/'>up pig women clothes</a>
 |  |  L  <a href='/public/Strange-things/A-sudden-whim-to/YYYYMMDDTHHMMSS/20200310T203536/SN/01/'>Submit demo</a>
-|  L  <a href='//github.com/shc7432/public/something/'>JavaScript Resources</a>
+|  L  <a href='https://github.com/shc7432/public/something/'>JavaScript Resources</a>
 L  <a href='javascript:'>Resources</a>
    L <a href='javascript:'>Application</a>
-     |- <a href='#/iframe-browser/url//download/apps/smallapp/'>Smallapp</a><!--
+     |- <a data-l="#/iframe-browser/url/" href='/download/apps/smallapp/'>Smallapp</a><!--
      |  |- <a href='/download/apps/smallapp/at-bilibili-user'>@bilibili-user</a>
      |  |- <a href='/download/apps/smallapp/call-forwarding'>Setting up call forwarding</a>
      |  |- <a href='/download/apps/smallapp/color-selected'>Color picker</a-->
      L  <a href='javascript:location.href="/download/apps/anonymous/?"+prompt("Where to visit?","")'>Anonymous access to websites</a>
 </pre>
 
-<div id=siteconfigs style="background-color:rgba(255,255,255,0.999);position:absolute;width:100%;height:100%;left:0;top:0;z-index:2097151;border:1px solid #ccc;" hidden>
-Settings <a style="color:blue" onclick="this.parentElement.hidden=1;location.href='#'">Close</a><hr>
-<div style="border:1px solid #ccc;">Site settings<br>
-Language: <select id="langset"><option id=lanseten value="en">English</option><option id=lansetzh value="zh">简体中文</option></select><br>
-Icon automatic color change: <input type=checkbox id="autoicon"><br>
-Welcome word: <input id=Swecwd placeholder="Please enter the content"><br>
-Import/Export configuration: <button type=button onclick="imSettings('site',prompt('Import key is?',''))">Import</button><button type=button onclick="exSettings('site')">Export</button></div><br>
-<div style="border:1px solid #ccc;">Account settings<br>
-No account is logged in.<br></div>
-<button onclick="siteconfigsSave()">Save</button> <button onclick="this.parentElement.hidden=1;location.href='#'">Close</button>
-</div>
+        <div id=siteconfigs hidden>
+            <dialogtitle>Settings <a class="closebtn">x</a></dialogtitle>
+            <hr>
+            <div style="padding:10px 10px">
+            <div style="border:1px solid #ccc;">Site settings<br>
+                Language: <select id="langset">
+                    <option id=lanseten value="en">English</option>
+                    <option id=lansetzh value="zh">简体中文</option>
+                </select><br>
+                Icon automatic color change: <input type=checkbox id="autoicon"><br>
+                Welcome word: <input id=Swecwd placeholder="Please enter the content"><br>
+                Import/Export configuration: <button type=button
+                    onclick="imSettings('site',prompt('Import key is?',''))">Import</button><button type=button
+                    onclick="exSettings('site')">Export</button></div><br>
+            <div style="border:1px solid #ccc;">Account settings<br>
+                No account is logged in.<br></div>
+            <button onclick="siteconfigsSave()">Save</button> <button
+                onclick="CreateDialogEx.remove(siteconfigs)">Close</button>
+            </div>
+        </div>
 
-<h1 id=wecwd>Welcome to our website!</h1>
+        <h1 id=wecwd>Welcome to our website!</h1>
 
-<hr>
+        <hr>
 
-<a id=totable href="/table/index/index.html" hidden>Desktop website | </a><a href="/about.xhtml" onclick="event.preventDefault();">About us</a>
+        <a id=todesktop href="/desktop/index/index.html" hidden>Desktop website</a>
+        <span id="todesktop_split" style="color:gray" hidden> | </span>
+        <a href="/about.xhtml" onclick="event.preventDefault();">About us</a>
 
-</div>
-<script id=mainScript>
-(function(){
-try{JSON.parse(localStorage.basicConfigurationOfWebsite)}
-catch(e){localStorage.basicConfigurationOfWebsite="{}"};
-Object.defineProperty(window,'basicset',{
-  get() {
-    return JSON.parse(localStorage.basicConfigurationOfWebsite);
-  } ,
-  set(v) {
-    localStorage.basicConfigurationOfWebsite=JSON.stringify(v);
-  }
-});
-if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)&&(!getUrlValue('tableSite'))) {
-functionBtns.hidden=!(mFunctionBtn.hidden=micon.hidden=totable.hidden=0);
-} 
+    </main>
 
-mFunctionBtn.onclick=function(){
-  mFunction.hidden=0
-}
-totable.onclick=function(e){
-  e.preventDefault();
-  var f=document.createElement('FORM'),ipt=document.createElement('input');
-  ipt.name="tableSite";ipt.value=!!1;
-  f.appendChild(ipt);
-  f.submit();
-}
+    <div class="cookie_ch-background" hidden></div>
+    <div id="cookie_ch" hidden>
+        <div class="text">
+            We use <a href=# class=c>cookies</a> to improve your experience in our website.
+            <a class=l target="_blank" 
+                href="https://en.wikipedia.org/wiki/HTTP_cookie">Learn more</a>
+        </div>
 
-var bc=basicset.siteconfig;
-lang.innerHTML=m_lang.innerHTML=bc.lang=(bc.lang||"English");
+        <div class="btn-group">
+            <button class="btn accept btn-recommended">Accept all cookies</button>
+            <button class="btn custom">Customize...</button>
+            <button class="btn decline">Decline all cookies</button>
+        </div>
 
-if(bc.lang=="English"){lanseten.selected=1} else {lansetzh.selected=1}
-bc.iconauto=bc.iconauto||'true';
-autoicon.checked=bc.iconauto;
-bc.welcomewd=bc.welcomewd||'Welcome to our website!';
-Swecwd.value=wecwd.innerHTML=bc.welcomewd;
+        <span style="display: block; height: 8px;"></span>
+    </div>
+    <div id="cookie_ch_cu" style="z-index: 2097153" hidden>
+        <dialogtitle>Cookie options</dialogtitle>
+        <div class="rbmenu" style="cursor:pointer"
+         onclick="location.reload()" hidden>Close</div>
+        <h3>We use only necessary cookie such as your settings.</h3>
+        <button class="btn accept btn-recommended">Accept</button>
+        <button class="btn decline">Decline</button>
+        <button class="btn cancel" onclick="location.reload()">Cancel</button>
+    </div>
 
-basicset=JSON.stringify({siteconfig:bc,userconfig:basicset.userconfig});
-})()
-
-textToImg= function (text,fontsize,fontcolor){
-    var canvas = document.createElement('canvas');
-    var s=(typeof(set)=="object"||{});
-    //小于32字加1  小于60字加2  小于80字加4    小于100字加6
-    $buHeight = 0;
-    if(fontsize <= 32){ $buHeight = 1; }
-    else if(fontsize > 32 && fontsize <= 60 ){ $buHeight = 2;}
-    else if(fontsize > 60 && fontsize <= 80 ){ $buHeight = 4;}
-    else if(fontsize > 80 && fontsize <= 100 ){ $buHeight = 6;}
-    else if(fontsize > 100 ){ $buHeight = 10;}
-    //对于g j 等有时会有遮挡，这里增加一些高度
-    canvas.height=fontsize + $buHeight ;
-    var context = canvas.getContext('2d');
-    // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = fontcolor;
-    context.font=fontsize+"px "+("Arial");
-    //top（顶部对齐） hanging（悬挂） middle（中间对齐） bottom（底部对齐） alphabetic是默认值
-    context.textBaseline = (s.textBaseline||s.textbaseline||'middle');
-    context.fillText(text,0,fontsize/2)
-    //如果在这里直接设置宽度和高度会造成内容丢失 , 暂时未找到原因 , 可以用以下方案临时解决
-    //canvas.width = context.measureText(text).width;
-    //方案一：可以先复制内容  然后设置宽度 最后再黏贴   
-    //方案二：创建新的canvas,把旧的canvas内容黏贴过去 
-    //方案三： 上边设置完宽度后，再设置一遍文字
-    //方案一： 这个经过测试有问题，字体变大后，显示不全,原因是canvas默认的宽度不够，
-    //如果一开始就给canvas一个很大的宽度的话，这个是可以的。   
-    //var imgData = context.getImageData(0,0,canvas.width,canvas.height);  //这里先复制原来的canvas里的内容
-    //canvas.width = context.measureText(text).width;  //然后设置宽和高   
-    //context.putImageData(imgData,0,0); //最后黏贴复制的内容
-    //方案三：改变大小后，重新设置一次文字
-    canvas.width = context.measureText(text).width;
-    context.fillStyle = fontcolor;
-    context.font=fontsize+"px "+(s.fontFamily||s.fontfamily||"Arial");
-    context.textBaseline = (s.textBaseline||s.textbaseline||'middle');
-    context.fillText(text,0,fontsize/2)
- 
-    var dataUrl = canvas.toDataURL('image/png');//注意这里背景透明的话，需要使用png
-    return dataUrl;
-}
-function changeIconColor(){
-  var color="#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
-  icon.src=icon2.src=micon.src=textToImg('The WebSite',20,color);
-  functionBtns.style.overflow="auto";
-  if(basicset.siteconfig.iconauto) setTimeout(changeIconColor,getRandom(5000,10000));
-}
-changeIconColor();
-function exSettings(s){
-prompt('Please save your import key:',JSON.stringify(JSON.parse(localStorage.basicConfigurationOfWebsite).siteconfig));
-}
-function imSettings(fw,str){
-let a=JSON.parse(localStorage.basicConfigurationOfWebsite);
-a.siteconfig=JSON.parse(str);
-basicset=a;
-}
-function siteconfigsSave(){
-let a={};
-a.welcomewd=Swecwd.value;
-a.iconauto=autoicon.checked;
-a.lang=langset.value;
-let b={siteconfig:a,userconfig:basicset.userconfig};
-basicset=a;
-showMessage('Config Saved.');
-if(confirm('Config saved.\nThe webpage needs to be restarted to apply these changes.\nReload?')) location.reload(!!1);
-}
-function checkPageUrl(){
-try{let pageurl=location.href.split('#');pageurl=pageurl[pageurl.length-1];
-if(!pageurl.indexOf('/settings/')) siteconfigs.hidden=0;
-if(!pageurl.indexOf('/contents/')) contents.hidden=0;
-
-}catch(e){true};
-setTimeout(checkPageUrl,500);
-}
-checkPageUrl();
-</script>
+    <script src="index.html.js"></script>
 </body>
+
 </html>
