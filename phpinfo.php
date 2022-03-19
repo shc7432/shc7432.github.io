@@ -74,6 +74,10 @@ if (!empty($_POST["password"]) && !$wrong_pwd) {
             border: 1px solid gray;
             padding: 10px 10px;
         }
+        #show_pswd {
+            user-select: none;
+            -webkit-user-select: none;
+        }
         .PASSWORD_ERROR_PROMPT {
             margin-top: 8px;
             padding: 4px 4px;
@@ -166,12 +170,13 @@ if (!empty($_POST["password"]) && !$wrong_pwd) {
             w.close();
         }
         
-        show_pswd.onmousedown = show_pswd.onkeypress = function () {
+        show_pswd.onmousedown = show_pswd.onkeypress =
+        show_pswd.ontouchstart = function () {
             pwd.type = "text";
         }; show_pswd.onmouseup = function () {
             pwd.type = "password";
             pwd.focus();
-        }; show_pswd.onkeyup = function () {
+        }; show_pswd.onkeyup = show_pswd.ontouchend = function () {
             pwd.type = "password";
         }; show_pswd.oncontextmenu = function () { return false };
     })()
