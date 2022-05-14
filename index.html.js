@@ -64,9 +64,12 @@
     }
     todesktop.onclick = function (e) {
         e.preventDefault();
-        var f = document.createElement('FORM'), ipt = document.createElement('input');
+        var f = document.createElement('FORM'),
+            ipt = document.createElement('input');
+        f.hidden = true;
         ipt.name = "desktopSite"; ipt.value = !!1;
         f.appendChild(ipt);
+        document.body.appendChild(f);
         f.submit();
     }
 
@@ -82,7 +85,7 @@
 
     //basicset = JSON.stringify({ siteconfig: bc, userconfig: basicset.userconfig });
 
-    textToImg = function (text, fontsize, fontcolor) {
+    window.textToImg = function (text, fontsize, fontcolor) {
         var canvas = document.createElement('canvas');
         var s = (typeof (set) == "object" || {});
         //小于32字加1  小于60字加2  小于80字加4    小于100字加6
@@ -122,7 +125,7 @@
         var dataUrl = canvas.toDataURL('image/png');//注意这里背景透明的话，需要使用png
         return dataUrl;
     }
-    function changeIconColor(b) {
+    window.changeIconColor = function (b) {
         var color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, "0");
         icon.src = icon2.src = micon.src = textToImg('The WebSite', 20, color);
         functionBtns.style.overflow = "auto";
@@ -130,15 +133,15 @@
         if (basicset.siteconfig.iconauto && b) setInterval(changeIconColor, 5000);
     }
     changeIconColor(1);
-    function exSettings(s) {
+    window.exSettings = function (s) {
         prompt('Please save your import key:', JSON.stringify(JSON.parse(localStorage.basicConfigurationOfWebsite).siteconfig));
     }
-    function imSettings(fw, str) {
+    window.imSettings = function (fw, str) {
         let a = JSON.parse(localStorage.basicConfigurationOfWebsite);
         a.siteconfig = JSON.parse(str);
         basicset = a;
     }
-    function siteconfigsSave() {
+    window.siteconfigsSave = function () {
         let a = {};
         a.welcomewd = Swecwd.value;
         a.iconauto = autoicon.checked;
@@ -148,7 +151,7 @@
         showMessage('Config Saved.');
         if (confirm('Config saved.\nThe webpage needs to be restarted to apply these changes.\nReload?')) location.reload(!!1);
     }
-    function checkPageUrl() {
+    window.checkPageUrl = function () {
         try {
             let pageurl = location.hash;
             if (pageurl.indexOf('#/settings') == 0) {
