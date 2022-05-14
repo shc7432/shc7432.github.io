@@ -20,6 +20,7 @@
         document.querySelector('#cookie_ch_cu .accept').onclick =
         function () {
             basicset.accept_cookies = true;
+            syncset();
             location.reload();
         };
         document.querySelector('#cookie_ch .text .c').onclick = function (e) {
@@ -32,6 +33,7 @@
         function () {
             basicset.accept_cookies = false;
             localStorage.clear();
+            syncset();
             location.reload();
         };
         document.querySelector('#cookie_ch .custom').onclick = function () {
